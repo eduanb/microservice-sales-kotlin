@@ -67,7 +67,7 @@
                 <configuration>
                     <image>
                         <publish>true</publish>
-                        <name>eduanbekker/microservice-sales-kotlin-account</name>
+                        <name>eduanb/microservice-sales-kotlin/account</name>
                     </image>
                 </configuration>
             </plugin>

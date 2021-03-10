@@ -108,9 +108,7 @@
                         </image>
                         <docker>
                             <publishRegistry>
-                                <url>https://hub.docker.com/</url>
-                                <username>${env.DOCKER_USERNAME}</username>
-                                <password>${env.DOCKER_PASSWORD}</password>
+                                <url>docker.pkg.github.com</url>
                             </publishRegistry>
                         </docker>
                     </configuration>
