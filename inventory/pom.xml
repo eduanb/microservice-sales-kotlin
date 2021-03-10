@@ -93,7 +93,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>eduanb/microservice-sales-kotlin/inventory</name>
+                        <name>eduanbekker/microservice-sales-kotlin-inventory</name>
                     </image>
                 </configuration>
             </plugin>

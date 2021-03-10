@@ -51,7 +51,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>eduanb/microservice-sales-kotlin/gateway</name>
+                        <name>eduanbekker/microservice-sales-kotlin-sales-gateway</name>
                     </image>
                 </configuration>
             </plugin>

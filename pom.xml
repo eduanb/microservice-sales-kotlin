@@ -108,8 +108,8 @@
                         </image>
                         <docker>
                             <publishRegistry>
-                                <url>docker.pkg.github.com</url>
-                                <token>${env.GITHUB_TOKEN}</token>
+                                <username>${env.DOCKER_USERNAME}</username>
+                                <password>${env.DOCKER_PASSWORD}</password>
                             </publishRegistry>
                         </docker>
                     </configuration>

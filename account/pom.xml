@@ -66,8 +66,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <publish>true</publish>
-                        <name>eduanb/microservice-sales-kotlin/account</name>
+                        <name>eduanbekker/microservice-sales-kotlin-account</name>
                     </image>
                 </configuration>
             </plugin>
