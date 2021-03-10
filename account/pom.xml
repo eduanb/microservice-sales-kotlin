@@ -66,22 +66,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
+                        <publish>true</publish>
                         <name>eduanbekker/microservice-sales-kotlin-account</name>
                     </image>
-                    <docker>
-                        <publishRegistry>
-                            <username>${env.DOCKER_USERNAME}</username>
-                            <password>${env.DOCKER_PASSWORD}</password>
-                        </publishRegistry>
-                    </docker>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build-image</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

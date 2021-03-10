@@ -99,6 +99,29 @@
                         </dependency>
                     </dependencies>
                 </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <image>
+                            <publish>true</publish>
+                        </image>
+                        <docker>
+                            <publishRegistry>
+                                <url>https://hub.docker.com/</url>
+                                <username>${env.DOCKER_USERNAME}</username>
+                                <password>${env.DOCKER_PASSWORD}</password>
+                            </publishRegistry>
+                        </docker>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>build-image</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
 
