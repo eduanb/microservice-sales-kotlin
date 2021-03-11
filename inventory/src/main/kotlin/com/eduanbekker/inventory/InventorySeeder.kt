@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ConditionalOnProperty(name = ["seed"], havingValue = "true")
-class Seeder {
+class InventorySeeder {
     @Bean
-    fun seed(inventoryRepository: InventoryRepository) = CommandLineRunner {
+    fun seedInventory(inventoryRepository: InventoryRepository) = CommandLineRunner {
         if(inventoryRepository.count() == 0L) {
             inventoryRepository.save(Inventory(1, "PS5", 10, 499.99))
         }

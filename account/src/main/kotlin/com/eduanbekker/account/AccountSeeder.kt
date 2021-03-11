@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ConditionalOnProperty(name = ["seed"], havingValue = "true")
-class Seeder {
+class AccountSeeder {
     @Bean
-    fun seed(accountRepository: AccountRepository) = CommandLineRunner {
+    fun seedAccount(accountRepository: AccountRepository) = CommandLineRunner {
         if (accountRepository.count() == 0L) {
             accountRepository.save(Account(1, 100.0))
         }

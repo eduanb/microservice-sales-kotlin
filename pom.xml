@@ -24,9 +24,11 @@
     </distributionManagement>
 
     <modules>
+        <module>api</module>
         <module>account</module>
         <module>inventory</module>
         <module>sales-gateway</module>
+        <module>sales-meta</module>
     </modules>
 
     <properties>
@@ -112,7 +114,7 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
                         <image>
-                            <publish>true</publish>
+<!--                            <publish>true</publish>-->
                         </image>
                         <docker>
                             <publishRegistry>
@@ -124,7 +126,14 @@
                     <executions>
                         <execution>
                             <goals>
-                                <goal>build-image</goal>
+<!--                                <goal>build-image</goal>-->
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>repackage</id>
+                            <goals>
+                                <goal>repackage</goal>
+                                <goal>build-info</goal>
                             </goals>
                         </execution>
                     </executions>

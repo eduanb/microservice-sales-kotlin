@@ -1,15 +1,23 @@
 package com.eduanbekker.account
 
 import com.eduanbekker.account.domain.AccountRepository
+import com.eduanbekker.api.AccountChangeRequest
+import com.eduanbekker.api.ChangeType
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.messaging.Message
 import java.util.function.Function
 
 @Configuration
+@EntityScan
+@ComponentScan
+@EnableJpaRepositories
 class AccountConfiguration {
     private val logger: Logger = LoggerFactory.getLogger(this::class.java)
     /**

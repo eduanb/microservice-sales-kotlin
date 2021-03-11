@@ -1,5 +1,8 @@
 package com.eduanbekker.salesgateway
 
+import com.eduanbekker.api.AccountChangeRequest
+import com.eduanbekker.api.ChangeType
+import com.eduanbekker.api.InventoryUpdateRequest
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.cloud.stream.function.StreamBridge
@@ -24,20 +27,4 @@ class SalesController(val inventoryClient: InventoryClient,
             MessageBuilder.withPayload(InventoryUpdateRequest(account, 1, ChangeType.SUBTRACT)).build())
     }
 
-}
-
-data class AccountChangeRequest(
-    val id: Long,
-    val amount: Double,
-    val type: ChangeType
-)
-
-data class InventoryUpdateRequest(
-    val id: Long,
-    val amount: Int,
-    val type: ChangeType
-)
-
-enum class ChangeType {
-    ADD, SUBTRACT
 }
