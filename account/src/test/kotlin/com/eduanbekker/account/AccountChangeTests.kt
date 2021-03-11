@@ -32,7 +32,7 @@ import org.springframework.messaging.support.GenericMessage
  * It sends JSON and checks the output JSON, verifying that the JSON converters work
  * and the does what is expected.
  */
-@SpringBootTest
+@SpringBootTest(properties = ["seed=false"])
 @Import(value = [TestChannelBinderConfiguration::class])
 @EnableAutoConfiguration(
     exclude = [DataSourceAutoConfiguration::class,

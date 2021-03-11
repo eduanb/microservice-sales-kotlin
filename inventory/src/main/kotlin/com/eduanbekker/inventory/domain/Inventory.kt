@@ -8,5 +8,6 @@ data class Inventory(
     @Id
     var id: Long = 0,
     var name: String,
-    var total: Int
+    var total: Int,
+    var price: Double
 )
