@@ -22,7 +22,9 @@ import org.testcontainers.junit.jupiter.Testcontainers
  * It starts up a full Postgres and full RabbitMQ
  * The test is on the RabbitMQ level. Sending an actual message and checking the response from RabbitMQ
  */
-@SpringBootTest
+@SpringBootTest(
+    properties = ["spring.cloud.stream.bindings.updateInventory-out-0.destination=output", "seed=false"]
+)
 @Testcontainers
 class InventoryChangeTests {
 
@@ -46,7 +48,7 @@ class InventoryChangeTests {
 
     @Test
     fun add() {
-        inventoryRepository.save(Inventory(1, "PS5", 10))
+        inventoryRepository.save(Inventory(1, "PS5", 10, 499.99))
 
         val body = """{"id": 1, "amount": 1, "type": "SUBTRACT"}"""
         rabbitTemplate.send(
@@ -55,7 +57,7 @@ class InventoryChangeTests {
         )
 
         val result = rabbitTemplate.receive("output", 10_000)
-        JSONAssert.assertEquals("""{"id":1,"name":"PS5","total":9}""", String(result!!.body), false)
+        JSONAssert.assertEquals("""{"id":1,"name":"PS5","total":9, price:499.99}""", String(result!!.body), false)
     }
 
     companion object {
