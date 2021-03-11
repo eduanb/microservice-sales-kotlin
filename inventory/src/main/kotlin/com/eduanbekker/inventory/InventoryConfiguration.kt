@@ -4,6 +4,7 @@ import com.eduanbekker.inventory.domain.InventoryRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.messaging.Message
 import java.util.function.Function
 
 @Configuration
@@ -15,18 +16,18 @@ class InventoryConfiguration {
      * Extension methods, scoped functions, elvis operator etc.
      */
     @Bean
-    fun updateInventory(inventoryRepository: InventoryRepository) = Function<InventoryUpdateRequest, Any> { request ->
-        val item = inventoryRepository.findByIdOrNull(request.id)
+    fun updateInventory(inventoryRepository: InventoryRepository) = Function<Message<InventoryUpdateRequest>, Any> { request ->
+        val item = inventoryRepository.findByIdOrNull(request.payload.id)
         if (item == null) {
-            return@Function "Could not find item: ${request.id}"
+            return@Function "Could not find item: ${request.payload.id}"
         }
 
         println("Updating inventory: $item")
 
-        if (request.type == ChangeType.ADD) {
-            item.total = item.total + request.amount
+        if (request.payload.type == ChangeType.ADD) {
+            item.total = item.total + request.payload.amount
         } else {
-            item.total = item.total - request.amount
+            item.total = item.total - request.payload.amount
         }
 
         println("Inventory is now: $item")

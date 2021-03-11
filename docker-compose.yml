@@ -16,3 +16,8 @@ services:
       POSTGRES_USER: postgres
     volumes:
       - ./db.sql:/docker-entrypoint-initdb.d/init.sql
+
+  tracing:
+    image: openzipkin/zipkin
+    ports:
+    - 9411:9411
