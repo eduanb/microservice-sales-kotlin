@@ -11,6 +11,18 @@
     <artifactId>api</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+            <version>3.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>10.10.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -24,11 +36,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <name>eduanbekker/microservice-sales-kotlin-sales-meta</name>
-                    </image>
-                </configuration>
+                <!-- Overwrite execution defined in parent -->
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <phase/>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
